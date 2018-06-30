@@ -10,6 +10,12 @@ public interface ApiClient {
     @GET("movie/top_rated")
     Call<MovieResponse> getTopRatedMovies(@Query("api_key") String apiKey);
 
+    @GET("movie/popular")
+    Call<MovieResponse> getPopularMovies(@Query("api_key") String apiKey);
+
+    @GET("movie/upcoming")
+    Call<MovieResponse> getUpcomingMovies(@Query("api_key") String apiKey);
+
     @GET("movie/{id}")
     Call<MovieResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
 }
