@@ -1,14 +1,10 @@
 package com.ydubinskyi.filmsapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.ydubinskyi.filmsapp.adapter.MoviesAdapter;
 import com.ydubinskyi.filmsapp.api.ApiService;
@@ -26,23 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private final static String API_KEY = "24887d21d7f4a96154895b95c9723021";
 
     private RecyclerView recyclerView;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    return true;
-                case R.id.navigation_dashboard:
-                    return true;
-                case R.id.navigation_notifications:
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
 }
