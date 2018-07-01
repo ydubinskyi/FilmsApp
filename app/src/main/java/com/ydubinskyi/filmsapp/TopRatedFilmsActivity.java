@@ -1,10 +1,13 @@
 package com.ydubinskyi.filmsapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.ydubinskyi.filmsapp.adapter.MoviesAdapter;
 import com.ydubinskyi.filmsapp.api.ApiService;
@@ -31,6 +34,19 @@ public class TopRatedFilmsActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+
+        Button Details = findViewById(R.id.Details);
+
+        Details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
