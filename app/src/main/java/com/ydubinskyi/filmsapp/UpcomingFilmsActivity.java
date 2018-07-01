@@ -28,6 +28,10 @@ public class UpcomingFilmsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_films);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,5 +49,11 @@ public class UpcomingFilmsActivity extends AppCompatActivity {
                 Log.d("TAG", t.toString());
             }
         });
+    }
+
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+
+        return true;
     }
 }

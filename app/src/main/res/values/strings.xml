@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="top_films">top_films</string>
-    <string name="popular_films">popular_films</string>
-    <string name="upcoming_films">upcoming_films</string>
+    <string name="top_films">Top Rated Movies</string>
+    <string name="popular_films">Most Popular Movies</string>
+    <string name="upcoming_films">Upcoming</string>
 </resources>
