@@ -1,10 +1,13 @@
 package com.ydubinskyi.filmsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.ydubinskyi.filmsapp.adapter.MoviesAdapter;
 import com.ydubinskyi.filmsapp.api.ApiService;
@@ -28,24 +31,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Call<MovieResponse> topMoviesCall = ApiService.getService().getUpcomingMovies(API_KEY);
+        Button bTopRated = findViewById(R.id.bTopRated);
+        Button bPopular = findViewById(R.id.bPopular);
+        Button bUpcoming = findViewById(R.id.bUpcoming);
 
-        topMoviesCall.enqueue(new Callback<MovieResponse>() {
+
+        bTopRated.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                List<Movie> movies = response.body().getResults();
-                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie, getApplicationContext()));
-            }
-
-            @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
-                Log.d("TAG", t.toString());
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TopRatedFilmsActivity.class);
+                startActivity(intent);
             }
         });
 
+        bPopular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PopularFilmsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bUpcoming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UpcomingFilmsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        
+
     }
+
+
 
 }
